@@ -1,0 +1,27 @@
+---
+// Hero variant: split - copy on one side, a photo on the other. Set flip to put
+// the photo on the left. Good when there's a strong single hero image.
+import Button from './Button.astro';
+interface Cta { label: string; href?: string; variant?: 'red' | 'gold' | 'outline' | 'ghost'; size?: '' | 'lg'; icon?: string; external?: boolean; }
+interface Props { eyebrow?: string; headline: string; sub?: string; ctas?: Cta[]; image?: string; imageAlt?: string; flip?: boolean; id?: string; }
+const { eyebrow, headline, sub, ctas = [], image, imageAlt = '', flip = false, id = 'top' } = Astro.props;
+---
+<section class:list={['hero-split', 'section', flip && 'is-flip']} id={id}>
+  <div class="wrap hero-split-in">
+    <div class="hero-split-copy reveal">
+      {eyebrow && <span class="kick">{eyebrow}</span>}
+      <h1 set:html={headline} />
+      {sub && <p class="lede" set:html={sub} />}
+      {ctas.length > 0 && (
+        <div class="cta-row">
+          {ctas.map((c) => (
+            <Button variant={c.variant ?? 'red'} size={c.size ?? 'lg'} href={c.href} icon={c.icon} external={c.external}>{c.label}</Button>
+          ))}
+        </div>
+      )}
+    </div>
+    {image && (
+      <div class="hero-split-media reveal"><img src={image} alt={imageAlt} /></div>
+    )}
+  </div>
+</section>

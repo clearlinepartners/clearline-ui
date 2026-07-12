@@ -1,0 +1,18 @@
+---
+// Primitive: a button/link. variant maps to token-driven .btn-* styles.
+interface Props {
+  variant?: 'red' | 'gold' | 'outline' | 'ghost' | 'call2';
+  size?: '' | 'lg';
+  href?: string;
+  icon?: string;        // trailing icon name, e.g. 'arrow'
+  external?: boolean;   // opens in new tab
+  class?: string;
+}
+const { variant = 'red', size = '', href = '#', icon, external = false, class: cls = '' } = Astro.props;
+const target = external ? '_blank' : undefined;
+const rel = external ? 'noopener' : undefined;
+---
+<a class:list={['btn', `btn-${variant}`, size === 'lg' && 'btn-lg', cls]} href={href} target={target} rel={rel}>
+  <slot />
+  {icon && <svg class="ic" aria-hidden="true"><use href={`#i-${icon}`} /></svg>}
+</a>

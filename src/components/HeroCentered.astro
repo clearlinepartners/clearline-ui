@@ -1,0 +1,22 @@
+---
+// Hero variant: centered, image-free. Bold headline + CTAs. Good when there's
+// no strong hero photo (clean, minimal, professional).
+import Button from './Button.astro';
+interface Cta { label: string; href?: string; variant?: 'red' | 'gold' | 'outline' | 'ghost'; size?: '' | 'lg'; icon?: string; external?: boolean; }
+interface Props { eyebrow?: string; headline: string; sub?: string; ctas?: Cta[]; id?: string; }
+const { eyebrow, headline, sub, ctas = [], id = 'top' } = Astro.props;
+---
+<section class="hero-centered section" id={id}>
+  <div class="wrap head reveal">
+    {eyebrow && <span class="kick">{eyebrow}</span>}
+    <h1 set:html={headline} />
+    {sub && <p class="lede" set:html={sub} />}
+    {ctas.length > 0 && (
+      <div class="cta-row cta-row--center">
+        {ctas.map((c) => (
+          <Button variant={c.variant ?? 'red'} size={c.size ?? 'lg'} href={c.href} icon={c.icon} external={c.external}>{c.label}</Button>
+        ))}
+      </div>
+    )}
+  </div>
+</section>
