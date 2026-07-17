@@ -215,7 +215,7 @@ p{margin:0}
 .ba-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:1040px;margin:0 auto}
 .ba-pair{margin:0;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.17);border-radius:var(--r-lg)}
 .ba-shot{position:relative;border-radius:10px;overflow:hidden}
-.ba-shot img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;display:block}
+.ba-shot img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;display:block}
 .ba-lab{position:absolute;left:8px;top:8px;font-size:10.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;padding:4px 9px;border-radius:6px;line-height:1.4}
 .ba-lab-b{background:rgba(8,26,54,.86);color:#fff}
 .ba-lab-a{background:var(--gold);color:var(--brand)}
